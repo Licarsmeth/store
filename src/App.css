@@ -40,6 +40,7 @@ nav img:hover{
 
 .heading{
   font-size: 3rem;
+  font-weight: bold;
 }
 
 .subheading{
@@ -47,7 +48,7 @@ nav img:hover{
 }
 
 .description{
-  margin: 1rem;
+  margin: 2rem;
   font-size: 1.5rem;
 }
 
@@ -64,7 +65,7 @@ nav img:hover{
 }
 
 .shop-button {
-  margin: 2rem;
+  margin: 3rem;
   display: inline-block;
   padding: 12px 24px;
   background-color: black; /* Green */
@@ -77,6 +78,18 @@ nav img:hover{
 }
 
 .shop-button:hover {
-  background-color: rgb(175, 170, 170); /* Darker green */
+  background-color: aliceblue; /* Darker green */
   color: black;
+}
+
+footer a{
+  text-decoration: none;
+  color: black;
+}
+
+footer{
+  position: fixed;
+  bottom: 1rem;
+  left: 50%;
+  translate: -50%;
 }
