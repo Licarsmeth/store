@@ -94,3 +94,10 @@ footer{
   left: 50%;
   translate: -50%;
 }
+
+.product{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  overflow: auto;
+}
