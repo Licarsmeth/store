@@ -65,6 +65,7 @@ nav img:hover{
 }
 
 .shop-button {
+  text-decoration: none;
   margin: 3rem;
   display: inline-block;
   padding: 12px 24px;

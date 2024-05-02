@@ -1,5 +1,6 @@
 import hero from "../assets/hero.avif";
 import heroine from "../assets/heroine.avif";
+import ShopButton from "./Shopbutton";
 const Hero = function () {
   return (
     <>
@@ -15,7 +16,9 @@ const Hero = function () {
         <img src={hero} alt="hero" />
         <img src={heroine} alt="heroine" />
       </div>
-      <button className="shop-button">Shop Now!</button>
+      {/* <button className="shop-button">Shop Now!</button>
+       */}
+       <ShopButton />
       <footer>
         {" "}
         Built by
