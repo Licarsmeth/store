@@ -28,13 +28,14 @@ const Shop = function () {
       {products?(
       products.map((product) => (
         <div key={product.id} className="product">
-            <h3 className="producttitle">{product.title}</h3>
+            <h4 className="producttitle">{product.title}</h4>
             <img src={product.image} alt="" className="productimg"/>
             <p className="productprice">${product.price}</p>
+            <p className="rating">Rating:{product.rating.rate}/5({product.rating.count})</p>
         </div>
       ))
     ): 
-    <p>Loading</p>
+    <p>Loading...</p>
     }
     </div>
     </>

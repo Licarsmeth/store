@@ -8,7 +8,8 @@ const Navbar = function () {
        <nav>
         <Logo />
         <div>
-            <Link className='shop' to="shop">Shop</Link>
+            <Link className='link' to="/">Home</Link>
+            <Link className='link' to="shop">Shop</Link>
             <Cart />
         </div>
        </nav>

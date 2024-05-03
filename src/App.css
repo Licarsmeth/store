@@ -23,15 +23,16 @@ nav img:hover{
   cursor: pointer;
 }
 
-.shop{
+.link{
   text-decoration: none;
   color: black;
   padding: 0.5rem;
   border-radius: 20%;
 }
 
-.shop:hover{
-  background-color: aliceblue;
+.link:hover{
+  background-color: whitesmoke;
+
 }
 
 .herotext{
@@ -78,7 +79,7 @@ nav img:hover{
 }
 
 .shop-button:hover {
-  background-color: aliceblue;
+  background-color: whitesmoke;
   color: black;
 }
 
@@ -97,20 +98,23 @@ footer{
 .products{
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 10px;
+  grid-gap: 1rem;
   padding: 3vh 20vw;
-  border: 2px solid black;
-  background-color: aliceblue;
+  background-color: whitesmoke;
 }
 
 .product{
-  box-shadow: 0 0 5px rgb(100, 99, 99);
+  box-shadow: 0 0 1px rgb(100, 99, 99);
   border-radius: 0.5rem;
   background-color: white;
+  display: flex;
+  flex-direction: column;
 }
 
 .producttitle{
 font-style: italic;
+padding: 2px;
+max-height: 2rem;
 }
 
 .productdesc{
@@ -118,11 +122,18 @@ overflow: auto;
 }
 
 .productimg{
-  height: 5rem;
+  height: 7rem;
+  object-fit: contain;
 }
 
 .productprice{
   font-size: 1.2rem;
   color: red;
   font-weight: bold;
+}
+
+.rating{
+  font-size: 0.9rem;
+  color: rgb(69, 68, 68);
+  margin-top: auto;
 }
