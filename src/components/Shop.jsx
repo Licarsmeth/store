@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import Navbar from "./Navbar";
 
-const Products = function () {
+const Shop = function () {
   const [products, setProducts] = useState(null);
 
   useEffect(() => {
@@ -24,14 +24,13 @@ const Products = function () {
   return (
     <>
     <Navbar />
-    <div className="product">
+    <div className="products">
       {products?(
       products.map((product) => (
-        <div key={product.id}>
-            <h3>{product.title}</h3>
-            <p>{product.description}</p>
-            <img src={product.image} alt="" />
-            <p>{product.price}</p>
+        <div key={product.id} className="product">
+            <h3 className="producttitle">{product.title}</h3>
+            <img src={product.image} alt="" className="productimg"/>
+            <p className="productprice">${product.price}</p>
         </div>
       ))
     ): 
@@ -42,4 +41,4 @@ const Products = function () {
   );
 };
 
-export default Products;
+export default Shop;

@@ -23,14 +23,14 @@ nav img:hover{
   cursor: pointer;
 }
 
-.products{
+.shop{
   text-decoration: none;
   color: black;
   padding: 0.5rem;
   border-radius: 20%;
 }
 
-.products:hover{
+.shop:hover{
   background-color: aliceblue;
 }
 
@@ -56,7 +56,6 @@ nav img:hover{
   display: flex;
   gap: 2rem;
   justify-content: center;
-  /* flex-direction: column; */
 }
 
 .heroimg img{
@@ -69,7 +68,7 @@ nav img:hover{
   margin: 3rem;
   display: inline-block;
   padding: 12px 24px;
-  background-color: black; /* Green */
+  background-color: black;
   color: white;
   font-size: 16px;
   border: none;
@@ -79,7 +78,7 @@ nav img:hover{
 }
 
 .shop-button:hover {
-  background-color: aliceblue; /* Darker green */
+  background-color: aliceblue;
   color: black;
 }
 
@@ -95,9 +94,35 @@ footer{
   translate: -50%;
 }
 
-.product{
+.products{
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-gap: 10px;
-  overflow: auto;
+  padding: 3vh 20vw;
+  border: 2px solid black;
+  background-color: aliceblue;
+}
+
+.product{
+  box-shadow: 0 0 5px rgb(100, 99, 99);
+  border-radius: 0.5rem;
+  background-color: white;
+}
+
+.producttitle{
+font-style: italic;
+}
+
+.productdesc{
+overflow: auto;
+}
+
+.productimg{
+  height: 5rem;
+}
+
+.productprice{
+  font-size: 1.2rem;
+  color: red;
+  font-weight: bold;
 }
