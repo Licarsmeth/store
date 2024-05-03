@@ -9,7 +9,7 @@ const Navbar = function () {
         <Logo />
         <div>
             <Link className='link' to="/">Home</Link>
-            <Link className='link' to="shop">Shop</Link>
+            <Link className='link' to="/shop">Shop</Link>
             <Cart />
         </div>
        </nav>
