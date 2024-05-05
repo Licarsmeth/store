@@ -1,9 +1,11 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import Navbar from "./Navbar";
+import Modal from "./Modal";
 
 const Shop = function () {
   const [products, setProducts] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
     const fetchData = async function () {
@@ -21,13 +23,18 @@ const Shop = function () {
 
     fetchData();
   }, []);
+
+  const handleProductClick = function (product) {
+    setSelectedProduct(product);
+  }
   return (
     <>
     <Navbar />
+    {/* show products in page */}
     <div className="products">
       {products?(
       products.map((product) => (
-        <div key={product.id} className="product">
+        <div key={product.id} className="product" onClick={()=>handleProductClick(product)}>
             <h4 className="producttitle">{product.title}</h4>
             <img src={product.image} alt="" className="productimg"/>
             <p className="productprice">${product.price}</p>
@@ -36,7 +43,11 @@ const Shop = function () {
       ))
     ): 
     <p>Loading...</p>
-    }
+  }
+  {/* click product to open modal */}
+  {selectedProduct && (
+  <Modal product={selectedProduct} onClose={() => setSelectedProduct(null)} />
+)}
     </div>
     </>
   );
