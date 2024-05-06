@@ -92,7 +92,11 @@ nav img:hover{
 
 .cart:hover{
   background-color: whitesmoke;
+}
 
+.cartlink{
+  text-decoration: none;
+  color: black;
 }
 
 .cart img{
