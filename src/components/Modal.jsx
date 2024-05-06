@@ -1,14 +1,16 @@
 /* eslint-disable react/prop-types */
 const Modal = ({ product, onClose }) => {
-  const handleClose = () => {
+  const handleClose = (event) => {
+    if (event.target === event.currentTarget){
     onClose();
+    }
   };
 
   return (
     <>
       {product && (
         <dialog open>
-          <div className="modal-overlay">
+          <div className="modal-overlay" onClick={handleClose}>
             <div className="modal">
               <button className="close-button" onClick={handleClose}>
                 ×
