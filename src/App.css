@@ -26,7 +26,7 @@ nav img:hover{
 .link{
   text-decoration: none;
   color: black;
-  padding: 0.5rem 1.5rem;
+  padding: 0.6rem 1.5rem;
   border-radius: 10%;
 }
 
@@ -86,7 +86,7 @@ nav img:hover{
 .cart{
   display: flex;
   gap: 0.3rem;
-  padding: 0.5rem 1.5rem;
+  padding: 0.2rem 1.5rem;
   border-radius: 10%;
 }
 
