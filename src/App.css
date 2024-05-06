@@ -26,8 +26,8 @@ nav img:hover{
 .link{
   text-decoration: none;
   color: black;
-  padding: 0.5rem;
-  border-radius: 20%;
+  padding: 0.5rem 1.5rem;
+  border-radius: 10%;
 }
 
 .link:hover{
@@ -82,6 +82,23 @@ nav img:hover{
   background-color: whitesmoke;
   color: black;
 }
+
+.cart{
+  display: flex;
+  gap: 0.3rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 10%;
+}
+
+.cart:hover{
+  background-color: whitesmoke;
+
+}
+
+.cart img{
+  height: 2rem;
+}
+
 
 footer a{
   text-decoration: none;
