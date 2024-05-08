@@ -9,7 +9,7 @@ const Cart = function () {
     <Link to="/cart" className="cartlink">
       <div className="cart">
         <img src={cart} alt="cart" />
-        <div className="cartnumber">{cartList.length}</div>
+        <div className="cartnumber">{cartList.length || null}</div>
       </div>
     </Link>
   );
