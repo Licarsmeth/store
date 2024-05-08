@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-const cartList = [];
+const cartList = JSON.parse(localStorage.getItem('cartList')) || [];
 const Modal = ({ product, onClose }) => {
   const handleClose = (event) => {
     if (event.target === event.currentTarget){
