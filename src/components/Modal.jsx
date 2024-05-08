@@ -64,3 +64,4 @@ const Modal = ({ product, onClose }) => {
 };
 
 export default Modal;
+export {cartList};

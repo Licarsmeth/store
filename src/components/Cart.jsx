@@ -2,14 +2,14 @@
 import cart from "../assets/cart.avif";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
+import { cartList } from "./Modal";
 
 const Cart = function () {
   return (
     <Link to="/cart" className="cartlink">
       <div className="cart">
-        <div>Cart</div>
         <img src={cart} alt="cart" />
-        <div className="cartnumber">1</div>
+        <div className="cartnumber">{cartList.length}</div>
       </div>
     </Link>
   );
