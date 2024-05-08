@@ -1,8 +1,7 @@
 /* eslint-disable react/prop-types */
-/* eslint-disable no-unused-vars */
-import { useEffect } from "react";
 import cart from "../assets/cart.avif";
 import { Link } from "react-router-dom";
+import Navbar from "./Navbar";
 
 const Cart = function () {
   return (
@@ -27,7 +26,7 @@ const Cartdata = function ({ products }) {
 };
 
 const Cartpage = function ({ products }) {
-    const rows = [];
+  const rows = [];
     rows.push(
         <Cartdata 
             products={products}
@@ -36,6 +35,7 @@ const Cartpage = function ({ products }) {
     )
   return (
     <>
+      <Navbar />
       <table>
         <thead>
             <tr>

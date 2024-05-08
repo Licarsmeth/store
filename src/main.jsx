@@ -3,13 +3,17 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import Shop from "./components/Shop";
-// import Cartpage from "./components/Cartpage";
 import { Cartpage } from "./components/Cart";
+import ErrorPage from "./components/Errorpage";
+
+const storedProducts = localStorage.getItem('cartList');
+  const rows = JSON.parse(storedProducts);
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />
   }, 
   {
     path: "shop",
@@ -17,7 +21,7 @@ const router = createBrowserRouter([
   },
   {
     path: "cart", 
-    element: <Cartpage />
+    element: <Cartpage products={rows} />
   }
 ]);
 
