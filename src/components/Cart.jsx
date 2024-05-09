@@ -23,8 +23,14 @@ const Cartdata = function ({cartList}) {
         <tr key={list.id} className="list">
               <td><img src={list.image} alt="item" className="cartimg"/></td>
               <td>{list.title}</td>
+              <td>
+                <input type="number" defaultValue={list.quantity}/>
+              </td>
               <td>${list.price}</td>
               <td>${list.price * list.quantity}</td>
+              <td>
+                <button>×</button>
+              </td>
         </tr>
       ))}
     </>
@@ -46,10 +52,12 @@ const Cartpage = function () {
       <table className="cart-table">
         <thead>
             <tr>
-                <th>Image</th>
+                <th>Product</th>
                 <th>Name</th>
-                <th>Unit</th>
-                <th>Total</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Total Price</th>
+                <th>Remove</th>
             </tr>
         </thead>
         <tbody>
