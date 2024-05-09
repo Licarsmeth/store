@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 let cartList = JSON.parse(localStorage.getItem('cartList')) || [];
-localStorage.clear();
+// localStorage.clear();
 const Modal = ({ product, onClose }) => {
   const handleClose = (event) => {
     if (event.target === event.currentTarget){
@@ -10,13 +10,12 @@ const Modal = ({ product, onClose }) => {
 
   const handleAddToCart = (product) =>{
     const cartInput = document.querySelector('.cart-input').valueAsNumber;
-    const productsOnCart = {id: product.id, quantity:cartInput};
+    const productsOnCart = {id: product.id, title: product.title, price: product.price, image: product.image, quantity:cartInput};
 
     //check if the item added is already in cart
     const containsProduct = cartList.some(cartItem => cartItem.id === product.id);
-
+    //increase quantity of item already present
     if(containsProduct){
-      console.log('yes');
       const updatedProducts = cartList.map(cartItem => {
         if (cartItem.id === product.id) {
           return { ...cartItem, quantity: cartItem.quantity + cartInput };
@@ -25,6 +24,7 @@ const Modal = ({ product, onClose }) => {
       });
       cartList = updatedProducts;
     }
+    //add item to cart
     else 
       cartList.push(productsOnCart);
     

@@ -16,13 +16,18 @@ const Cart = function () {
   );
 };
 
-const Cartdata = function () {
+const Cartdata = function ({cartList}) {
   return (
-    <tr>
-      <td>data1</td>
-      <td>data2</td>
-      <td>data3</td>
-    </tr>
+    <>
+    {cartList.map((list) => (
+        <tr key={list.id} className="list">
+              <td><img src={list.image} alt="item" className="cartimg"/></td>
+              <td>{list.title}</td>
+              <td>${list.price}</td>
+              <td>${list.price * list.quantity}</td>
+        </tr>
+      ))}
+    </>
   );
 };
 
@@ -32,18 +37,19 @@ const Cartpage = function () {
   //cart not empty
   if (cartList.length != 0) {
     rows.push(
-        <Cartdata
+        <Cartdata key="cartdata" cartList = {cartList}
         />
     )
       return (
         <>
       <Navbar />
-      <table>
+      <table className="cart-table">
         <thead>
             <tr>
-                <th>{cartList[0].id}</th>
-                <th>Price</th>
-                <th>Action</th>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Unit</th>
+                <th>Total</th>
             </tr>
         </thead>
         <tbody>
