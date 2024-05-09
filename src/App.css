@@ -236,3 +236,8 @@ dialog[open] {
   right: 0;
   bottom: 0;
 }
+
+.empty-cart{
+  font-size: 2rem;
+  padding: 5rem;
+}

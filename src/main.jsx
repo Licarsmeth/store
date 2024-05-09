@@ -6,9 +6,6 @@ import Shop from "./components/Shop";
 import { Cartpage } from "./components/Cart";
 import ErrorPage from "./components/Errorpage";
 
-const storedProducts = localStorage.getItem('cartList');
-  const rows = JSON.parse(storedProducts);
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,7 +18,7 @@ const router = createBrowserRouter([
   },
   {
     path: "cart", 
-    element: <Cartpage products={rows} />
+    element: <Cartpage/>
   }
 ]);
 
