@@ -28,7 +28,7 @@ const Checkout = function ({ handleCheckout }) {
   );
 };
 
-const Cartdata = function ({ cartList, handleRemoveButton }) {
+const Cartdata = function ({ cartList, handleRemoveButton, plusItem, minusItem }) {
   return (
     <>
       {cartList.map((list) => (
@@ -40,7 +40,8 @@ const Cartdata = function ({ cartList, handleRemoveButton }) {
           <td>
             <NumberInput
               amount={list.quantity}
-              id= {list.id}
+              plusItem = {() => plusItem(list.id)}
+              minusItem = {() => minusItem(list.id)}
               removeItem={() => handleRemoveButton(list.id)}
             />
           </td>
@@ -76,6 +77,20 @@ const Cartpage = function () {
     setRefresh(!refresh);
   };
 
+  const plusItem = function (id) {
+    const itemIndex = cartList.findIndex((item) => item.id === id);
+    cartList[itemIndex].quantity += 1;
+    localStorage.setItem("cartList", JSON.stringify(cartList));
+    setRefresh(!refresh);
+  };
+
+  const minusItem = function(id) {
+    const itemIndex = cartList.findIndex((item) => item.id === id);
+    cartList[itemIndex].quantity -= 1;
+    localStorage.setItem("cartList", JSON.stringify(cartList));
+    setRefresh(!refresh);
+  }
+
   const rows = [];
   //cart not empty
   if (cartList.length != 0) {
@@ -83,6 +98,8 @@ const Cartpage = function () {
       <Cartdata
         key="cartdata"
         cartList={cartList}
+        plusItem = {plusItem}
+        minusItem = {minusItem}
         handleRemoveButton={handleRemoveButton}
       />
     );
