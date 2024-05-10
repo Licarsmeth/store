@@ -40,6 +40,7 @@ const Cartdata = function ({ cartList, handleRemoveButton }) {
           <td>
             <NumberInput
               amount={list.quantity}
+              id= {list.id}
               removeItem={() => handleRemoveButton(list.id)}
             />
           </td>
@@ -63,7 +64,6 @@ const Cartpage = function () {
   const [refresh, setRefresh] = useState(true);
   const handleCheckout = function () {
     alert("The items will soon be delivered");
-    console.log(localStorage);
     localStorage.clear();
     // eslint-disable-next-line no-import-assign
     cartList = JSON.parse(localStorage.getItem("cartList"));

@@ -53,7 +53,7 @@ const Modal = ({ product, onClose }) => {
               <p className="productprice">${product.price}</p>
               <p className="modal-description">{product.description}</p>
               <div className="cart-row">
-                <input type="number" className="cart-input" defaultValue={1}/>
+                <input type="number" className="cart-input" defaultValue={1} min={1}/>
                 <button className="cart-button" onClick={() => handleAddToCart(product)}>Add to Cart</button>
               </div>
             </div>
