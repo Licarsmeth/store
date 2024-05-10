@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import { cartList } from "./Modal";
 import ShopButton from "./Shopbutton";
 import NumberInput from "./NumberInput";
+import { useState } from "react";
 
 const Cart = function () {
   return (
@@ -17,38 +18,41 @@ const Cart = function () {
   );
 };
 
-const Checkout = function () {
-  return(
-    <>
-      <Link className="shop-button" onClick={handleCheckout}>Checkout</Link>
-    </>
-  )
-}
-
-const handleCheckout = function() {
-  alert("The items will soon be delivered");
-  // localStorage.clear()
-}
-
-const handleRemoveButton = function (id) {
-  alert(`Item ${id} removed`)
-}
-
-const Cartdata = function ({cartList}) {
+const Checkout = function ({ handleCheckout }) {
   return (
     <>
-    {cartList.map((list) => (
+      <Link className="shop-button" onClick={() => handleCheckout()}>
+        Checkout
+      </Link>
+    </>
+  );
+};
+
+const Cartdata = function ({ cartList, handleRemoveButton }) {
+  return (
+    <>
+      {cartList.map((list) => (
         <tr key={list.id} className="list">
-              <td><img src={list.image} alt="item" className="cartimg"/></td>
-              <td>{list.title}</td>
-              <td>
-                <NumberInput amount={list.quantity} removeItem={() => handleRemoveButton(list.id)}/>
-              </td>
-              <td>${list.price}</td>
-              <td>${(list.price * list.quantity).toFixed(2)}</td>
-              <td>
-                <button onClick={() => handleRemoveButton(list.id)}className="remove-button">×</button>
-              </td>
+          <td>
+            <img src={list.image} alt="item" className="cartimg" />
+          </td>
+          <td>{list.title}</td>
+          <td>
+            <NumberInput
+              amount={list.quantity}
+              removeItem={() => handleRemoveButton(list.id)}
+            />
+          </td>
+          <td>${list.price}</td>
+          <td>${(list.price * list.quantity).toFixed(2)}</td>
+          <td>
+            <button
+              onClick={() => handleRemoveButton(list.id)}
+              className="remove-button"
+            >
+              ×
+            </button>
+          </td>
         </tr>
       ))}
     </>
@@ -56,56 +60,76 @@ const Cartdata = function ({cartList}) {
 };
 
 const Cartpage = function () {
-  console.log(cartList);
+  const [refresh, setRefresh] = useState(true);
+  const handleCheckout = function () {
+    alert("The items will soon be delivered");
+    console.log(localStorage);
+    localStorage.clear();
+    // eslint-disable-next-line no-import-assign
+    cartList = JSON.parse(localStorage.getItem("cartList"));
+  };
+
+  const handleRemoveButton = function (id) {
+    const indexToRemove = cartList.findIndex((item) => item.id === id);
+    cartList.splice(indexToRemove, 1);
+    localStorage.setItem("cartList", JSON.stringify(cartList));
+    setRefresh(!refresh);
+  };
+
   const rows = [];
   //cart not empty
   if (cartList.length != 0) {
     rows.push(
-        <Cartdata key="cartdata" cartList = {cartList}
-        />
-    )
-      return (
-        <>
-      <Navbar />
-      <table className="cart-table">
-        <thead>
+      <Cartdata
+        key="cartdata"
+        cartList={cartList}
+        handleRemoveButton={handleRemoveButton}
+      />
+    );
+    return (
+      <>
+        <Navbar />
+        <table className="cart-table">
+          <thead>
             <tr>
-                <th>Product</th>
-                <th>Name</th>
-                <th>Quantity</th>
-                <th>Unit Price</th>
-                <th>Total Price</th>
-                <th>Remove</th>
+              <th>Product</th>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Unit Price</th>
+              <th>Total Price</th>
+              <th>Remove</th>
             </tr>
-        </thead>
-        <tbody>
+          </thead>
+          <tbody>
             {rows}
             <tr>
               <td colSpan={4}>Total</td>
-              <td>${
-                cartList.reduce((acc, item)=>{
-                  return acc + (item.price * item.quantity)
-                }, 0).toFixed(2)
-                }</td>
+              <td>
+                $
+                {cartList
+                  .reduce((acc, item) => {
+                    return acc + item.price * item.quantity;
+                  }, 0)
+                  .toFixed(2)}
+              </td>
             </tr>
-        </tbody>
-      </table>
-      <Checkout />
-    </>
-      )
-    }
-    //cart empty
-      else{
-        return(
-          <>
-          <Navbar />
-          <div className="empty-cart">Nothing in the cart :(
-            </div>
-            <div>Continue Shopping!</div>
-          <ShopButton />
-          </>
-        )
-      }
+          </tbody>
+        </table>
+        <Checkout handleCheckout={handleCheckout} />
+      </>
+    );
+  }
+  //cart empty
+  else {
+    return (
+      <>
+        <Navbar />
+        <div className="empty-cart">Nothing in the cart :(</div>
+        <div>Continue Shopping!</div>
+        <ShopButton />
+      </>
+    );
+  }
 };
 
 export default Cart;
