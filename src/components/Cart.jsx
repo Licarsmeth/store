@@ -16,6 +16,14 @@ const Cart = function () {
   );
 };
 
+const Checkout = function () {
+  return(
+    <>
+      <Link className="shop-button">Checkout</Link>
+    </>
+  )
+}
+
 const Cartdata = function ({cartList}) {
   return (
     <>
@@ -62,8 +70,19 @@ const Cartpage = function () {
         </thead>
         <tbody>
             {rows}
+            <tr>
+              <td colSpan={4}>Total</td>
+              <td>${
+                cartList.reduce((acc, item)=>{
+                  return acc + (item.price * item.quantity)
+                }, 0)
+                }</td>
+            </tr>
         </tbody>
       </table>
+      <div className="cartbottom">
+        <Checkout />
+      </div>
     </>
       )
     }
