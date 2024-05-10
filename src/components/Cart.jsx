@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 import { cartList } from "./Modal";
 import ShopButton from "./Shopbutton";
+import NumberInput from "./NumberInput";
 
 const Cart = function () {
   return (
@@ -19,9 +20,18 @@ const Cart = function () {
 const Checkout = function () {
   return(
     <>
-      <Link className="shop-button">Checkout</Link>
+      <Link className="shop-button" onClick={handleCheckout}>Checkout</Link>
     </>
   )
+}
+
+const handleCheckout = function() {
+  alert("The items will soon be delivered");
+  // localStorage.clear()
+}
+
+const handleRemoveButton = function (id) {
+  alert(`Item ${id} removed`)
 }
 
 const Cartdata = function ({cartList}) {
@@ -32,12 +42,12 @@ const Cartdata = function ({cartList}) {
               <td><img src={list.image} alt="item" className="cartimg"/></td>
               <td>{list.title}</td>
               <td>
-                <input type="number" defaultValue={list.quantity}/>
+                <NumberInput amount={list.quantity} removeItem={() => handleRemoveButton(list.id)}/>
               </td>
               <td>${list.price}</td>
-              <td>${list.price * list.quantity}</td>
+              <td>${(list.price * list.quantity).toFixed(2)}</td>
               <td>
-                <button>×</button>
+                <button onClick={() => handleRemoveButton(list.id)}className="remove-button">×</button>
               </td>
         </tr>
       ))}
@@ -75,14 +85,12 @@ const Cartpage = function () {
               <td>${
                 cartList.reduce((acc, item)=>{
                   return acc + (item.price * item.quantity)
-                }, 0)
+                }, 0).toFixed(2)
                 }</td>
             </tr>
         </tbody>
       </table>
-      <div className="cartbottom">
-        <Checkout />
-      </div>
+      <Checkout />
     </>
       )
     }

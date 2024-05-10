@@ -278,7 +278,7 @@ dialog[open] {
   background-color: #f5f5f5;
 }
 
-td button{
+.remove-button{
   background-color: red;
   color: white;
   height: 2rem;
@@ -288,7 +288,13 @@ td button{
   border-radius: 0.5rem;
 }
 
-td input{
-  max-width: 20%;
+.number-input{
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
 }
 
+.number-input button{
+  background-color: white;
+  border: 1px solid rgb(219, 212, 212);
+}
