@@ -65,5 +65,15 @@ const Modal = ({ product, onClose }) => {
 };
 
 export default Modal;
-// eslint-disable-next-line react-refresh/only-export-components
-export {cartList};
+export const getCartList = () => cartList;
+
+export const setCartList = () => {
+  cartList = JSON.parse(localStorage.getItem("cartList")) || [];
+};
+
+
+export const clearCartList = () => {
+  cartList = [];
+  localStorage.clear();
+};
+

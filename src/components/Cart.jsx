@@ -2,7 +2,9 @@
 import cart from "../assets/cart.avif";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
-import { cartList } from "./Modal";
+// import { cartList } from "./Modal";
+// import { getCartList as cartList } from "./Modal";
+import { getCartList as cartList, setCartList } from "./Modal";
 import ShopButton from "./Shopbutton";
 import NumberInput from "./NumberInput";
 import { useState } from "react";
@@ -12,7 +14,7 @@ const Cart = function () {
     <Link to="/cart" className="cartlink">
       <div className="cart">
         <img src={cart} alt="cart" />
-        <div className="cartnumber">{cartList.length || null}</div>
+        <div className="cartnumber">{cartList().length || null}</div>
       </div>
     </Link>
   );
@@ -67,33 +69,34 @@ const Cartpage = function () {
     alert("The items will soon be delivered");
     localStorage.clear();
     // eslint-disable-next-line no-import-assign
-    cartList = JSON.parse(localStorage.getItem("cartList"));
+    setCartList();
+    //  = JSON.parse(localStorage.getItem("cartList"));
   };
 
   const handleRemoveButton = function (id) {
-    const indexToRemove = cartList.findIndex((item) => item.id === id);
-    cartList.splice(indexToRemove, 1);
-    localStorage.setItem("cartList", JSON.stringify(cartList));
+    const indexToRemove = cartList().findIndex((item) => item.id === id);
+    cartList().splice(indexToRemove, 1);
+    localStorage.setItem("cartList", JSON.stringify(cartList()));
     setRefresh(!refresh);
   };
 
   const plusItem = function (id) {
     const itemIndex = cartList.findIndex((item) => item.id === id);
     cartList[itemIndex].quantity += 1;
-    localStorage.setItem("cartList", JSON.stringify(cartList));
+    localStorage.setItem("cartList", JSON.stringify(cartList()));
     setRefresh(!refresh);
   };
 
   const minusItem = function(id) {
-    const itemIndex = cartList.findIndex((item) => item.id === id);
-    cartList[itemIndex].quantity -= 1;
-    localStorage.setItem("cartList", JSON.stringify(cartList));
+    const itemIndex = cartList().findIndex((item) => item.id === id);
+    cartList()[itemIndex].quantity -= 1;
+    localStorage.setItem("cartList", JSON.stringify(cartList()));
     setRefresh(!refresh);
   }
 
   const rows = [];
   //cart not empty
-  if (cartList.length != 0) {
+  if (cartList().length != 0) {
     rows.push(
       <Cartdata
         key="cartdata"
@@ -123,7 +126,7 @@ const Cartpage = function () {
               <td colSpan={4}>Total</td>
               <td>
                 $
-                {cartList
+                {cartList()
                   .reduce((acc, item) => {
                     return acc + item.price * item.quantity;
                   }, 0)
