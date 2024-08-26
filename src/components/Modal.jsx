@@ -70,10 +70,3 @@ export const getCartList = () => cartList;
 export const setCartList = () => {
   cartList = JSON.parse(localStorage.getItem("cartList")) || [];
 };
-
-
-export const clearCartList = () => {
-  cartList = [];
-  localStorage.clear();
-};
-
